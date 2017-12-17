@@ -24,6 +24,10 @@ public class Populacao {
 	public void adicionar(Individuo novo) {
 		this.individuos.add(novo);
 	}
+        
+        public void remover(Individuo individuo){
+            this.individuos.remove(individuo);
+        }
 	
 	public int getTamanho() {
 		return individuos.size();

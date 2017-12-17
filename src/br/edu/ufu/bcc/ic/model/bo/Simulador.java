@@ -26,15 +26,18 @@ public class Simulador {
 	private SelecionadorPais selecionadorPais;
 	private PopulacaoView populacaoView = new PopulacaoView();
 	
-        public List<Individuo> PopulacaoMelhorAptidão(Populacao populacao){
+        public void PopulacaoMelhorAptidão(Populacao populacao){
         List<Individuo> ordenaTodos = new ArrayList<>();
         ordenaTodos = populacao.getIndividuos();
         Collections.sort(ordenaTodos);
+        /*int count = 1;
         for (Individuo cromossomo: ordenaTodos){
             if(cromossomo.getAptidao() > 0.0)
-                System.out.println(cromossomo.toString());
-        }
-        return ordenaTodos;
+               System.out.println(count + ": "+ cromossomo.toString());
+               count++;
+        }*/
+            populacao.remover(ordenaTodos.get(101));
+            populacao.remover(ordenaTodos.get(100));
         }
         
         
@@ -63,11 +66,14 @@ public class Simulador {
 				this.mutadorIndividuo.executar(filhos[0]);
 				this.mutadorIndividuo.executar(filhos[1]);
 			}
-			
-			populacao.adicionar(filhos[0]);
-			populacao.adicionar(filhos[1]);
                         
-                        populacao.setIndividuos(this.PopulacaoMelhorAptidão(populacao));
+			if(!populacao.contem(filhos[0]))
+                            populacao.adicionar(filhos[0]);
+                        if(!populacao.contem(filhos[1]))
+                            populacao.adicionar(filhos[1]);
+                        
+                        this.PopulacaoMelhorAptidão(populacao);
+                        populacaoView.executar(populacao);
 		}
 	}
 }
