@@ -1,6 +1,7 @@
 package br.edu.ufu.bcc.ic.model.vo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Populacao {
@@ -9,6 +10,16 @@ public class Populacao {
 	public List<Individuo> getIndividuos() {
 		return individuos;
 	}
+        
+        public void BalanceadorPopulacao(){
+            List<Individuo> ordenaTodos = new ArrayList<>();
+            ordenaTodos = this.getIndividuos();
+            Collections.sort(ordenaTodos);
+            if(this.individuos.size() == 102)
+                this.remover(ordenaTodos.get(101));
+            if(this.individuos.size() == 101)
+                this.remover(ordenaTodos.get(100));
+        }
 
 	public void setIndividuos(List<Individuo> individuos) {
 		this.individuos = individuos;

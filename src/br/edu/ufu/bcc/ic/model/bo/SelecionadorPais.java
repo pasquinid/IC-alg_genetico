@@ -40,6 +40,10 @@ public class SelecionadorPais {
 			totalParcial = totalParcial + individuos.get(i).getAptidao();
 			i++;
 		}
+                
+                //Verificar isso com o Hugo
+                if (i > 99)
+                    i = 99;
 		
 		return individuos.get(i);
 		

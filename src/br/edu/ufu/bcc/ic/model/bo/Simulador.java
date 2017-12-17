@@ -10,6 +10,7 @@ import br.edu.ufu.bcc.ic.model.vo.Grafo;
 import br.edu.ufu.bcc.ic.model.vo.Individuo;
 import br.edu.ufu.bcc.ic.model.vo.Populacao;
 import br.edu.ufu.bcc.ic.view.PopulacaoView;
+import br.edu.ufu.bcc.ic.view.IndividuoView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,21 +26,14 @@ public class Simulador {
 	private ReprodutorIndividuos reprodutorIndividuos;
 	private SelecionadorPais selecionadorPais;
 	private PopulacaoView populacaoView = new PopulacaoView();
-	
-        public void PopulacaoMelhorAptidão(Populacao populacao){
-        List<Individuo> ordenaTodos = new ArrayList<>();
-        ordenaTodos = populacao.getIndividuos();
-        Collections.sort(ordenaTodos);
-        /*int count = 1;
-        for (Individuo cromossomo: ordenaTodos){
-            if(cromossomo.getAptidao() > 0.0)
-               System.out.println(count + ": "+ cromossomo.toString());
-               count++;
-        }*/
-            populacao.remover(ordenaTodos.get(101));
-            populacao.remover(ordenaTodos.get(100));
-        }
+        private IndividuoView individuoView = new IndividuoView();
         
+        public Individuo melhorIndividuo(Populacao populacao){
+            List<Individuo> ordenaTodos = new ArrayList<>();
+            ordenaTodos = populacao.getIndividuos();
+            Collections.sort(ordenaTodos);
+            return ordenaTodos.get(0);     
+        }
         
 	public Simulador() {
 		this.grafo = grafoDAO.get();
@@ -55,8 +49,8 @@ public class Simulador {
                 this.selecionadorPais = new SelecionadorPais(populacao);
 		Random random = new Random();
 		
-		int i = 0;
-		while( i < numeroGeracoes ) {
+		int geracao = 0;
+		while( geracao < numeroGeracoes ) {
 			
 			Individuo[] pais = this.selecionadorPais.executar();
 			Individuo[] filhos = this.reprodutorIndividuos.executar(pais[0], pais[1]);
@@ -72,8 +66,12 @@ public class Simulador {
                         if(!populacao.contem(filhos[1]))
                             populacao.adicionar(filhos[1]);
                         
-                        this.PopulacaoMelhorAptidão(populacao);
-                        populacaoView.executar(populacao);
+                        populacao.BalanceadorPopulacao();
+                        geracao++;
 		}
+                populacaoView.executar(populacao);
+                System.out.println("=============Melhor Cromossomo===================");
+                Individuo melhorRota = this.melhorIndividuo(populacao);
+                individuoView.executar(melhorRota);
 	}
 }
