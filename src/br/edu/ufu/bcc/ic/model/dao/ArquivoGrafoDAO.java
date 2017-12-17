@@ -24,7 +24,7 @@ public class ArquivoGrafoDAO implements GrafoDAO {
 			for (int i = 0; scanner.hasNext(); i++){
                                 String[] linha = scanner.next().split(" ");
 				for (int j = 0; j < numeroVertices; j++){
-					grafo.set(i, j, Double.parseDouble(scanner.next()));
+					grafo.set(i, j, Double.parseDouble(linha[j]));
                                 }
                         }
 		} catch (IOException e) {
