@@ -69,8 +69,9 @@ public class Simulador {
                         populacao.BalanceadorPopulacao();
                         geracao++;
 		}
+                System.out.println("============Populacao Final========================");
                 populacaoView.executar(populacao);
-                System.out.println("=============Melhor Cromossomo===================");
+                System.out.println("\n=============Melhor Cromossomo===================");
                 Individuo melhorRota = this.melhorIndividuo(populacao);
                 individuoView.executar(melhorRota);
 	}
