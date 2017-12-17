@@ -32,8 +32,4 @@ public class Populacao {
 	public Individuo getIndividuo(int posicao) {
 		return this.individuos.get(posicao);
 	}
-	
-	public List<Individuos> getIndividuos(){
-		return this.individuos;
-	}
 }

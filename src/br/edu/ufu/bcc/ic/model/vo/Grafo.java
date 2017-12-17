@@ -31,4 +31,17 @@ public class Grafo {
 	public int getTamanho() {
 		return this.matriz.length;
 	}
+	
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < matriz.length; i++) {
+			int j = 0;
+			while ( j < matriz[i].length - 1) {
+				stringBuilder.append(matriz[i][j] + " ");
+				j++;
+			}
+			stringBuilder.append(matriz[i][j] + "\n");
+		}
+		return stringBuilder.toString();
+	}
 }
