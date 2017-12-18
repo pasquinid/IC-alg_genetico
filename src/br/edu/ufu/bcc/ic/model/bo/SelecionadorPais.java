@@ -27,7 +27,8 @@ public class SelecionadorPais {
 		List<Individuo> individuos = populacao.getIndividuos();
 		double total = calcularSomaAptidoes();
 		Random random = new Random();
-		double rand = random.nextDouble() * total;
+                double x = random.nextDouble();
+		double rand = x * total;
 		double totalParcial;
 		int i;
 		
@@ -36,16 +37,14 @@ public class SelecionadorPais {
 		
 		totalParcial = 0.0;
 		i = 0;
-		while (totalParcial < rand) {
+		while (totalParcial < rand && totalParcial <= total) {
 			totalParcial = totalParcial + individuos.get(i).getAptidao();
 			i++;
 		}
-                
-                //Verificar isso com o Hugo
-                if (i > 99)
-                    i = 99;
-		
-		return individuos.get(i);
+
+		if ( i == individuos.size() )
+                    return individuos.get(i-1);
+                return individuos.get(i);
 		
 	}
 	

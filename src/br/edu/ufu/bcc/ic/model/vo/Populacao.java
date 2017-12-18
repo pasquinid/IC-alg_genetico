@@ -15,10 +15,10 @@ public class Populacao {
             List<Individuo> ordenaTodos = new ArrayList<>();
             ordenaTodos = this.getIndividuos();
             Collections.sort(ordenaTodos);
-            if(this.individuos.size() == 102)
-                this.remover(ordenaTodos.get(101));
-            if(this.individuos.size() == 101)
-                this.remover(ordenaTodos.get(100));
+            if(this.individuos.size() == 352)
+                this.remover(ordenaTodos.get(351));
+            if(this.individuos.size() == 351)
+                this.remover(ordenaTodos.get(350));
         }
 
 	public void setIndividuos(List<Individuo> individuos) {

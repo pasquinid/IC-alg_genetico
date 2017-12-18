@@ -16,11 +16,10 @@ public class ArquivoConfiguracaoDAO implements ConfiguracaoDAO {
 			FileInputStream arquivo = new FileInputStream(caminho);
 			this.propriedades.load(arquivo);
 		} catch (IOException e) {
-			this.propriedades.setProperty("numero.geracoes", "100");
 			this.propriedades.setProperty("distancia.maxima.percorrida", "250");
 			this.propriedades.setProperty("numero.vertices", "42");
 			this.propriedades.setProperty("tamanho.populacao.inicial", "100");
-			this.propriedades.setProperty("numero.geracoes", "100");
+			this.propriedades.setProperty("numero.geracoes", "1000");
 			this.propriedades.setProperty("porcentagem.mutacao", "0.5");
 			salvar();
 		}

@@ -50,8 +50,10 @@ public class Simulador {
 		Random random = new Random();
 		
 		int geracao = 0;
+                System.out.println(numeroGeracoes);
 		while( geracao < numeroGeracoes ) {
-			
+                    
+                    for(int i=0; i<8; i++){
 			Individuo[] pais = this.selecionadorPais.executar();
 			Individuo[] filhos = this.reprodutorIndividuos.executar(pais[0], pais[1]);
 			double probabilidadeMutacao = random.nextDouble();
@@ -67,8 +69,10 @@ public class Simulador {
                             populacao.adicionar(filhos[1]);
                         
                         populacao.BalanceadorPopulacao();
+                    }
                         geracao++;
 		}
+                System.out.println(geracao);
                 System.out.println("============Populacao Final========================");
                 populacaoView.executar(populacao);
                 System.out.println("\n=============Melhor Cromossomo===================");
