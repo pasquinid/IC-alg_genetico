@@ -12,6 +12,7 @@ import br.edu.ufu.bcc.ic.model.vo.Populacao;
 import br.edu.ufu.bcc.ic.view.PopulacaoView;
 import br.edu.ufu.bcc.ic.view.IndividuoView;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -49,6 +50,8 @@ public class Simulador {
                 this.selecionadorPais = new SelecionadorPais(populacao);
 		Random random = new Random();
 		
+		List<Double> aptidoes = new ArrayList<>(); 
+		
 		int geracao = 0;
                 System.out.println(numeroGeracoes);
 		while( geracao < numeroGeracoes ) {
@@ -74,9 +77,11 @@ public class Simulador {
 		}
                 System.out.println(geracao);
                 System.out.println("============Populacao Final========================");
-                populacaoView.executar(populacao);
+                aptidoes = populacaoView.executar(populacao);
                 System.out.println("\n=============Melhor Cromossomo===================");
                 Individuo melhorRota = this.melhorIndividuo(populacao);
                 individuoView.executar(melhorRota);
+                
+                System.out.println(Arrays.toString(aptidoes.toArray()));
 	}
 }

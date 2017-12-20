@@ -108,11 +108,13 @@ sumario=tradicional
 	\section{Introdução}
 	\addcontentsline{toc}{section}{Introdução}
 
-	A pesquisa sobre a área de Computação Evolutiva(CE) tem se expandido rapidamente.
+	A pesquisa sobre a área de Computação Evolutiva(CE) tem se expandido rapidamente, principalmente para resolver problemas de otimizaçãocombinatória NP-difícil.
 	
 	Os Algoritmos Evolutivos(AEs) são métodos de busca estocásticos que imitam a evolução biológica natural. Eles são compostos por uma sequência de passos até a solução, sendo estes passos os mesmos para uma ampla gama de problemas, fornecendo robustez e flexibilidade.
 	
 	Existem vantagens para utilizarmos esses algoritimos como o desenvolvimento de algoritmos capazes de encontrar soluções adequadas para problemas complexos, ainda não resolvidos por outras técnicas computacionais, a simplicidade dos métodos utilizando princípios básicos de Teoria da Evolução e Genética que podem ser modelados por poucas e simples linhas de código e também a adaptação relativamente fácil para problemas das mais diversas áreas.
+	
+	\vspace{10px}
 
 	Os principais Algoritmos Evolutivos são:
 	\begin{enumerate}
@@ -123,6 +125,8 @@ sumario=tradicional
 		\item Genetic Programming (GP);
 		\item Sistemas Classificadores (SC);
 	\end{enumerate}
+
+	\subsection{Descrição do Problema Caixeiro Viajante}
 
 	O Problema do Caixeiro Viajante (PCV) é um problema combinatório fundamentalmente matemático que tem perdurado por longo tempo. Não se sabe ao certo um documento que comprove sua autoria, muito menos a origem do nome. Em meados de 1800, problemas relacionados ao PCV começaram a ser desenvolvidos, mas somente em 1950 ficou conhecido globalmente em sua forma geral. \cite{APPLEGATE}.
 
@@ -138,18 +142,22 @@ sumario=tradicional
 	
 	Os AGs são métodos de busca e otimização inspirados na biologia evolucionária da população de seres vivos \cite{DARWIN}\cite{HOLLAND} \cite{GOLDBERG}. Como uma técnica de otimização e busca, os algoritmos genéticos apresentam uma função objetivo (também chamado aptidão ou fitness), utilizada para avaliar cada uma de uma soluções obtidas, uma vez que o método gera um conjunto de soluções, e não apenas uma.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{Figuras/funcionamento-ag.png}
-		\caption{Esquema geral de funcionamento do AG.}
-	\end{figure}
+	\subsection{Aplicações} 
 	
-	Esquema-geral-de-funcionamento-do-Algoritmo-Genetico
+	Existem várias aplicações para o problema do caixeiro viajante. \cite{REINELT} Um exemplo é o processo de perfuração de placas de circuitos impressos em sua confecção. Uma placa de circuito impresso pode conter centenas ou milhares de furos para soldagem de componentes eletrônicos. Como os furos podem ser de tamanhos diferentes, é necessária a troca da ferramenta. Essa troca de ferramenta é um processo lento. Para que a ferramenta não seja trocada várias vezes, é necessária uma otimização perfurando primeiro todos os furos de mesmo diâmetro. Assim, esse processo pode ser visto como um problema do caixeiro viajante. Percorrendo-se o melhor caminho possível, economiza-se tempo, aumentando a produtividade do processo \cite{FREEDO}.
+	
+	Uma segunda aplicação é a que ocorre na análise de estruturas de cristais na cristalografia por raios-x. A cristalografia analisa a disposição dos átomos em sólidos. Para isso um difratômetro obtêm informações da estrutura de um material cristalino medindo a intensidade dos raios-x refletidos do material, saindo de várias posições. Em alguns experimentos, o difratômetro deve realizar até 30.000 deslocamentos para fazer as medidas. Isso significa que pode haver um percurso com até 30.000 pontos de medida. Para minimizar o tempo gasto na mensuração, deve-se escolher um percurso mínimo entre os pontos de medida, o qual pode ser modelado através do problema do caixeiro viajante \cite{FREEDO}.
 	
 	\section{Metodologia}
 	
 	Para o PCV, cada cromossomo codifica uma solução, isto é, a rota que possui a menor distância. A função de
 	adaptação(fitness), que avalia cada cromossomo, está relacionada com o tamanho da rota, no qual depende da ordem em que as cidades aparecem na mesma.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{Figuras/funcionamento-ag.png}
+		\caption{Esquema geral de funcionamento do AG.}
+	\end{figure}
 	
 	
 	\section{Configuração do AG}
@@ -187,6 +195,20 @@ sumario=tradicional
 		Goldberg, David E.
 		\emph{Genetic Algorithms in Search, Optimization, and Machine Learning},
 		1989
+		
+		\bibitem{REINELT}
+		Reinelt, G.
+		\emph{The Traveling Salesman: Computational Solutions for TSP Applications},
+		Lecture Notes in Computer Science, 840, Springer-Verlag,
+		1994
+		
+		\bibitem{FREEDO}
+		Freddo, Ademir Roberto and Brito, Robison Cris.
+		\emph{Implementação da Metaheurística GRASP para o Problema
+			do Caixeiro Viajante Simétrico}.
+		Disponível em: http://www.inf.ufpr.br/aurora/disciplinas/topicosia2/
+		downloads/trabalhos/GraspTSP.pdf.
+		Acesso em: 19/12/2017
 			
 	\end{thebibliography}
 	
