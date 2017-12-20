@@ -1,0 +1,193 @@
+%% abtex2-modelo-artigo.tex, v<VERSION> laurocesar
+%% Copyright 2012-<COPYRIGHT_YEAR> by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+% periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+article,			% indica que é um artigo acadêmico
+11pt,				% tamanho da fonte
+oneside,			% para impressão apenas no recto. Oposto a twoside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+sumario=tradicional
+]{article}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage[brazil]{babel}
+\usepackage{indentfirst}
+\usepackage[section]{placeins}
+\usepackage{authblk}
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+%\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+%\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+%\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+%\usepackage{nomencl} 			% Lista de simbolos
+%\usepackage{color}				% Controle das cores
+%\usepackage{graphicx}			% Inclusão de gráficos
+%\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+%\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+\title{\textbf{Problema do caixeiro viajante utilizando Algoritimos Genéticos}}
+\author{Diego Pontes Pasquini; Gabriela Araújo Coelho; Hugo Gustavo Valin Oliveira da Cunha; Jessiane Gomes Andrade; Tatiane Fernanda de Souza Silva}
+\date{Dezembro de 2017}
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+	
+	% página de titulo
+	\maketitle
+	
+	\begin{center}
+		\small
+		Disciplina: Inteligência Computacional \\
+		\small
+		Professora: Dra. Rita Maria da Silva Julia
+	\end{center}
+	
+	% resumo em português
+	\begin{abstract}
+		Neste trabalho foi implementado um programa utilizando Algoritimos Genéticos(AGs) com o objetivo de resolver o problema do caixeiro viajante. O projeto foi desenvolvido em linguagem Java, visando sua portabilidade.  	
+		\vspace{20px}
+		
+		\noindent
+		\textbf{Palavras-chave}: Algoritimos Genéticos. Inteligência Computacional. Caixeiro viajante.
+	\end{abstract}
+	
+
+	\section{Introdução}
+	\addcontentsline{toc}{section}{Introdução}
+
+	A pesquisa sobre a área de Computação Evolutiva(CE) tem se expandido rapidamente.
+	
+	Os Algoritmos Evolutivos(AEs) são métodos de busca estocásticos que imitam a evolução biológica natural. Eles são compostos por uma sequência de passos até a solução, sendo estes passos os mesmos para uma ampla gama de problemas, fornecendo robustez e flexibilidade.
+	
+	Existem vantagens para utilizarmos esses algoritimos como o desenvolvimento de algoritmos capazes de encontrar soluções adequadas para problemas complexos, ainda não resolvidos por outras técnicas computacionais, a simplicidade dos métodos utilizando princípios básicos de Teoria da Evolução e Genética que podem ser modelados por poucas e simples linhas de código e também a adaptação relativamente fácil para problemas das mais diversas áreas.
+
+	Os principais Algoritmos Evolutivos são:
+	\begin{enumerate}
+		\item Algoritmos Genéticos (AG);
+		\item Estratégias Evolutivas (EE);
+		\item Programação Evolutiva (PE);
+		\item Programação Genética (PG); 
+		\item Genetic Programming (GP);
+		\item Sistemas Classificadores (SC);
+	\end{enumerate}
+
+	O Problema do Caixeiro Viajante (PCV) é um problema combinatório fundamentalmente matemático que tem perdurado por longo tempo. Não se sabe ao certo um documento que comprove sua autoria, muito menos a origem do nome. Em meados de 1800, problemas relacionados ao PCV começaram a ser desenvolvidos, mas somente em 1950 ficou conhecido globalmente em sua forma geral. \cite{APPLEGATE}.
+
+	O PCV é um problema que tenta determinar a menor rota para percorrer uma série de cidades (visitando uma única vez cada uma delas), retornando à cidade de origem. Ele é um problema de otimização NP-difícil inspirado na necessidade dos vendedores em realizar entregas em diversos locais (as cidades) percorrendo o menor caminho possível, reduzindo o tempo necessário para a viagem e os possíveis custos com transporte e combustível.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{Figuras/grafo-caixeiro-viajante.png}
+		\caption{Exemplo de solução para um PVC.}
+	\end{figure}
+
+	Os algoritmos heurísticos constituem uma alternativa computacionalmente viável encontrada pelos pesquisadores para resolver o PCV. A limitação desta alternativa é a qualidade da solução obtida, que não necessariamente é a ótima. Dentre os métodos heurísticos que encontram soluções de forma eficiente estão os Algoritmos Genéticos(AGs).
+	
+	Os AGs são métodos de busca e otimização inspirados na biologia evolucionária da população de seres vivos \cite{DARWIN}\cite{HOLLAND} \cite{GOLDBERG}. Como uma técnica de otimização e busca, os algoritmos genéticos apresentam uma função objetivo (também chamado aptidão ou fitness), utilizada para avaliar cada uma de uma soluções obtidas, uma vez que o método gera um conjunto de soluções, e não apenas uma.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{Figuras/funcionamento-ag.png}
+		\caption{Esquema geral de funcionamento do AG.}
+	\end{figure}
+	
+	Esquema-geral-de-funcionamento-do-Algoritmo-Genetico
+	
+	\section{Metodologia}
+	
+	Para o PCV, cada cromossomo codifica uma solução, isto é, a rota que possui a menor distância. A função de
+	adaptação(fitness), que avalia cada cromossomo, está relacionada com o tamanho da rota, no qual depende da ordem em que as cidades aparecem na mesma.
+	
+	
+	\section{Configuração do AG}
+	
+
+
+	\section{Resultados}
+
+	
+	\section{Conclusão}
+	
+
+	\begin{thebibliography}{4}
+		\bibliographystyle{apa}
+		
+		\bibitem{APPLEGATE}
+		David L. Applegate, Robert E. Bixby, Vasek Chvátal and William J. Cook
+		\emph{The Traveling Salesman Problem. A Computational Study},
+		Princeton University Press,
+		2006
+		
+		\bibitem{DARWIN}
+		Darwin, Charles
+		\emph{The Traveling Salesman Problem. On the Origin of Species by Means of Natural Selection},
+		London
+		1859
+		
+		\bibitem{HOLLAND}
+		Holland, John H.
+		\emph{Adaptation in Natural and Artificial Systems},
+		Ann Arbor, MI
+		1975
+		
+		\bibitem{GOLDBERG}
+		Goldberg, David E.
+		\emph{Genetic Algorithms in Search, Optimization, and Machine Learning},
+		1989
+			
+	\end{thebibliography}
+	
+\end{document}

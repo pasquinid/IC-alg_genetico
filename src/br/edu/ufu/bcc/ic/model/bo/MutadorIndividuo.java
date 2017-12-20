@@ -24,6 +24,7 @@ public class MutadorIndividuo {
 	}
 	
 	// Troca dois genes de posicao
+	/*
 	public void executar(Individuo individuo) {
 		int[] cromossomo = individuo.getCromossomo();
 		Random random = new Random();
@@ -41,5 +42,49 @@ public class MutadorIndividuo {
 
 		individuo.setCromossomo(cromossomo);
 		individuo.setAptidao(aptidao);
+	}*/
+	
+	// Inveresão
+	public void executar(Individuo individuo) {
+		int[] cromossomo = individuo.getCromossomo();
+		Random random = new Random();
+		
+		// Geracao de posicoes aleatorias para troca de genes
+		int posicao1 = random.nextInt(cromossomo.length);
+		int posicao2 = random.nextInt(cromossomo.length);
+	
+		
+		int tamanhoInversao = 0;
+		int inicio;
+		int fim;
+
+		if(posicao1 < posicao2) {
+			tamanhoInversao = posicao2 - posicao1;
+			inicio = posicao1;
+			fim = posicao2;
+		} else {
+			tamanhoInversao = posicao1 - posicao2;
+			inicio = posicao2;
+			fim = posicao1;
+		}
+		
+		if(tamanhoInversao > 0) {
+			// Inversão dos genes
+			int[] cromossomoMutante = new int[cromossomo.length];
+			
+			int j = 0;			
+			for(int i = 0; i < cromossomo.length; i++) {
+				cromossomoMutante[i] = cromossomo[i];
+				if(i >= inicio || i <= fim) {
+					cromossomoMutante[i] = cromossomo[tamanhoInversao-1];
+					tamanhoInversao--;
+				}
+			}
+			
+			double aptidao = calcularAptidao(cromossomoMutante);
+	
+			individuo.setCromossomo(cromossomoMutante);
+			individuo.setAptidao(aptidao);
+		}
 	}
 }

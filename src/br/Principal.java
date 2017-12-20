@@ -7,7 +7,6 @@ public class Principal {
 	public static void main(String[] args) {
 		Simulador simulacao = new Simulador();
 		simulacao.executar();
-
 	}
 
 }
