@@ -11,15 +11,15 @@ public class Populacao {
 		return individuos;
 	}
         
-        public void BalanceadorPopulacao(){
-            List<Individuo> ordenaTodos = new ArrayList<>();
-            ordenaTodos = this.getIndividuos();
-            Collections.sort(ordenaTodos);
-            if(this.individuos.size() == 352)
-                this.remover(ordenaTodos.get(351));
-            if(this.individuos.size() == 351)
-                this.remover(ordenaTodos.get(350));
-        }
+	public void BalanceadorPopulacao(){
+		List<Individuo> ordenaTodos = new ArrayList<>();
+		ordenaTodos = this.getIndividuos();
+		Collections.sort(ordenaTodos);
+		if(this.individuos.size() == 352)
+			this.remover(ordenaTodos.get(351));
+		if(this.individuos.size() == 351)
+			this.remover(ordenaTodos.get(350));
+	}
 
 	public void setIndividuos(List<Individuo> individuos) {
 		this.individuos = individuos;
@@ -36,7 +36,7 @@ public class Populacao {
 		this.individuos.add(novo);
 	}
         
-        public void remover(Individuo individuo){
+	public void remover(Individuo individuo){
             this.individuos.remove(individuo);
         }
 	

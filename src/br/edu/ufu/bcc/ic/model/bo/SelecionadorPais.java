@@ -21,13 +21,12 @@ public class SelecionadorPais {
 			soma+=i.getAptidao();
 		return soma;
 	}
-	
-	// Metodo da roleta
+
 	public Individuo roletaRussa() {
 		List<Individuo> individuos = populacao.getIndividuos();
 		double total = calcularSomaAptidoes();
 		Random random = new Random();
-                double x = random.nextDouble();
+		double x = random.nextDouble();
 		double rand = x * total;
 		double totalParcial;
 		int i;

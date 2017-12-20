@@ -1,7 +1,5 @@
 package br.edu.ufu.bcc.ic.model.bo;
 
-import java.util.Random;
-
 import br.edu.ufu.bcc.ic.model.dao.ArquivoConfiguracaoDAO;
 import br.edu.ufu.bcc.ic.model.dao.ArquivoGrafoDAO;
 import br.edu.ufu.bcc.ic.model.dao.ConfiguracaoDAO;
@@ -9,11 +7,14 @@ import br.edu.ufu.bcc.ic.model.dao.GrafoDAO;
 import br.edu.ufu.bcc.ic.model.vo.Grafo;
 import br.edu.ufu.bcc.ic.model.vo.Individuo;
 import br.edu.ufu.bcc.ic.model.vo.Populacao;
-import br.edu.ufu.bcc.ic.view.PopulacaoView;
 import br.edu.ufu.bcc.ic.view.IndividuoView;
+import br.edu.ufu.bcc.ic.view.PopulacaoView;
+import br.edu.ufu.bcc.ic.view.resultadosView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Simulador {
 	private ConfiguracaoDAO configuracaoDAO = new ArquivoConfiguracaoDAO();
@@ -26,14 +27,19 @@ public class Simulador {
 	private ReprodutorIndividuos reprodutorIndividuos;
 	private SelecionadorPais selecionadorPais;
 	private PopulacaoView populacaoView = new PopulacaoView();
-        private IndividuoView individuoView = new IndividuoView();
-        
-        public Individuo melhorIndividuo(Populacao populacao){
-            List<Individuo> ordenaTodos = new ArrayList<>();
-            ordenaTodos = populacao.getIndividuos();
-            Collections.sort(ordenaTodos);
-            return ordenaTodos.get(0);     
-        }
+	private IndividuoView individuoView = new IndividuoView();
+
+	private resultadosView graficosView = new resultadosView();
+	private ArrayList<Double> aptidoesObtidas = new ArrayList<Double>();
+	private ArrayList<Double> geracoesAptidoesObtidas = new ArrayList<Double>();
+
+
+	public Individuo melhorIndividuo(Populacao populacao){
+		List<Individuo> ordenaTodos = new ArrayList<>();
+		ordenaTodos = populacao.getIndividuos();
+		Collections.sort(ordenaTodos);
+		return ordenaTodos.get(0);
+	}
         
 	public Simulador() {
 		this.grafo = grafoDAO.get();
@@ -46,37 +52,64 @@ public class Simulador {
 		Populacao populacao = geradorPopulacaoInicial.executar();
 		int numeroGeracoes = Integer.parseInt(configuracaoDAO.get("numero.geracoes"));
 		double porcentagemMutacao = Double.parseDouble(configuracaoDAO.get("porcentagem.mutacao"));
-                this.selecionadorPais = new SelecionadorPais(populacao);
+		this.selecionadorPais = new SelecionadorPais(populacao);
 		Random random = new Random();
 		
 		int geracao = 0;
-                System.out.println(numeroGeracoes);
+		System.out.println("Executando o algoritmo com "+numeroGeracoes+" gerações...");
 		while( geracao < numeroGeracoes ) {
                     
-                    for(int i=0; i<8; i++){
-			Individuo[] pais = this.selecionadorPais.executar();
-			Individuo[] filhos = this.reprodutorIndividuos.executar(pais[0], pais[1]);
-			double probabilidadeMutacao = random.nextDouble();
-			
-			if ( probabilidadeMutacao >= porcentagemMutacao ) {
-				this.mutadorIndividuo.executar(filhos[0]);
-				this.mutadorIndividuo.executar(filhos[1]);
+			for(int i=0; i<8; i++){
+
+				Individuo[] pais = this.selecionadorPais.executar();
+				Individuo[] filhos = this.reprodutorIndividuos.executar(pais[0], pais[1]);
+
+				double probabilidadeMutacao = random.nextDouble();
+
+				if ( probabilidadeMutacao >= porcentagemMutacao ) {
+					this.mutadorIndividuo.executar(filhos[0]);
+					this.mutadorIndividuo.executar(filhos[1]);
+				}
+
+				if(!populacao.contem(filhos[0]))
+					populacao.adicionar(filhos[0]);
+
+				if(!populacao.contem(filhos[1]))
+					populacao.adicionar(filhos[1]);
+
+				populacao.BalanceadorPopulacao();
+
 			}
-                        
-			if(!populacao.contem(filhos[0]))
-                            populacao.adicionar(filhos[0]);
-                        if(!populacao.contem(filhos[1]))
-                            populacao.adicionar(filhos[1]);
-                        
-                        populacao.BalanceadorPopulacao();
-                    }
-                        geracao++;
+
+			this.aptidoesObtidas.add(this.melhorIndividuo(populacao).getAptidao());
+			this.geracoesAptidoesObtidas.add((double) geracao);
+
+			geracao++;
 		}
-                System.out.println(geracao);
-                System.out.println("============Populacao Final========================");
-                populacaoView.executar(populacao);
-                System.out.println("\n=============Melhor Cromossomo===================");
-                Individuo melhorRota = this.melhorIndividuo(populacao);
-                individuoView.executar(melhorRota);
+
+		this.graficosView.executar(aptidoesObtidas,geracoesAptidoesObtidas);
+
+		System.out.println(geracao);
+		System.out.println("============Populacao Final========================");
+		populacaoView.executar(populacao);
+		System.out.println("\n=============Melhor Cromossomo===================");
+		Individuo melhorRota = this.melhorIndividuo(populacao);
+		individuoView.executar(melhorRota);
+	}
+
+	public ArrayList getAptidoesObtidas() {
+		return aptidoesObtidas;
+	}
+
+	public void setAptidoesObtidas(ArrayList aptidoesObtidas) {
+		this.aptidoesObtidas = aptidoesObtidas;
+	}
+
+	public ArrayList getGeracoesAptidoesObtidas() {
+		return geracoesAptidoesObtidas;
+	}
+
+	public void setGeracoesAptidoesObtidas(ArrayList geracoesAptidoesObtidas) {
+		this.geracoesAptidoesObtidas = geracoesAptidoesObtidas;
 	}
 }
