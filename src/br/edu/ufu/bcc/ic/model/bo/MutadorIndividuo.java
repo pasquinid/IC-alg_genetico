@@ -72,12 +72,12 @@ public class MutadorIndividuo {
 			// Inversão dos genes
 			int[] cromossomoMutante = new int[cromossomo.length];
 			
-			int j = 0;			
+			int j = fim;			
 			for(int i = 0; i < cromossomo.length; i++) {
 				cromossomoMutante[i] = cromossomo[i];
-				if(i >= inicio || i <= fim) {
-					cromossomoMutante[i] = cromossomo[tamanhoInversao-1];
-					tamanhoInversao--;
+				if(i >= inicio && i <= fim) {
+					cromossomoMutante[i] = cromossomo[j];
+					j--;
 				}
 			}
 			
