@@ -24,7 +24,7 @@ public class MutadorIndividuo {
 	}
 	
 	// Troca dois genes de posicao
-	
+	/*
 	public void executar(Individuo individuo) {
 		int[] cromossomo = individuo.getCromossomo();
 		Random random = new Random();
@@ -42,7 +42,7 @@ public class MutadorIndividuo {
 
 		individuo.setCromossomo(cromossomo);
 		individuo.setAptidao(aptidao);
-	}/*
+	}*/
 	
 	// Inveresão
 	public void executar(Individuo individuo) {
@@ -86,5 +86,5 @@ public class MutadorIndividuo {
 			individuo.setCromossomo(cromossomoMutante);
 			individuo.setAptidao(aptidao);
 		}
-	}*/
+	}
 }
