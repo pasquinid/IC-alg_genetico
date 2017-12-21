@@ -47,6 +47,7 @@ public class Simulador {
 		Populacao populacao = geradorPopulacaoInicial.executar();
 		int numeroGeracoes = Integer.parseInt(configuracaoDAO.get("numero.geracoes"));
 		double porcentagemMutacao = Double.parseDouble(configuracaoDAO.get("porcentagem.mutacao"));
+                int tipoMutacao = Integer.parseInt(configuracaoDAO.get("tipo.mutacao"));
                 this.selecionadorPais = new SelecionadorPais(populacao);
 		Random random = new Random();
 		
@@ -62,18 +63,29 @@ public class Simulador {
 			double probabilidadeMutacao = random.nextDouble();
 			
 			if ( probabilidadeMutacao >= porcentagemMutacao ) {
-				this.mutadorIndividuo.executar(filhos[0]);
-				this.mutadorIndividuo.executar(filhos[1]);
+                            if(tipoMutacao == 1){
+				this.mutadorIndividuo.executarTrocadoisGenes(filhos[0]);
+				this.mutadorIndividuo.executarTrocadoisGenes(filhos[1]);
+                            }
+                            else if(tipoMutacao == 2){
+                                this.mutadorIndividuo.executarInversaodeGenes(filhos[0]);
+                                this.mutadorIndividuo.executarInversaodeGenes(filhos[1]);
+                            }
+                            else{
+                                System.out.println("Erro em entrada de mutador, verifique opção.");
+                                break;
+                            }
+                            
 			}
                         
 			if(!populacao.contem(filhos[0]))
                             populacao.adicionar(filhos[0]);
                         if(!populacao.contem(filhos[1]))
                             populacao.adicionar(filhos[1]);
-                        
-                        populacao.BalanceadorPopulacao();
+                       
                     }
-                        geracao++;
+                    populacao.BalanceadorPopulacao();
+                    geracao++;
 		}
                 System.out.println(geracao);
                 System.out.println("============Populacao Final========================");
@@ -81,7 +93,7 @@ public class Simulador {
                 System.out.println("\n=============Melhor Cromossomo===================");
                 Individuo melhorRota = this.melhorIndividuo(populacao);
                 individuoView.executar(melhorRota);
-                
-                System.out.println(Arrays.toString(aptidoes.toArray()));
+            
+                System.out.println("Tamanho da populacao: " + populacao.getIndividuos().size());
 	}
 }

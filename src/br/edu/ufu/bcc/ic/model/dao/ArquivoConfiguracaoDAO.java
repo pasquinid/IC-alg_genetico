@@ -21,6 +21,7 @@ public class ArquivoConfiguracaoDAO implements ConfiguracaoDAO {
 			this.propriedades.setProperty("tamanho.populacao.inicial", "100");
 			this.propriedades.setProperty("numero.geracoes", "1000");
 			this.propriedades.setProperty("porcentagem.mutacao", "0.5");
+                        this.propriedades.setProperty("tipo.mutacao", "1");
 			salvar();
 		}
 	}

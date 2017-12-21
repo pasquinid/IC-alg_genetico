@@ -1,24 +1,29 @@
 package br.edu.ufu.bcc.ic.model.vo;
 
+import br.edu.ufu.bcc.ic.model.dao.ArquivoConfiguracaoDAO;
+import br.edu.ufu.bcc.ic.model.dao.ConfiguracaoDAO;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Populacao {
 	private List<Individuo> individuos = new ArrayList<Individuo>();
+        private ConfiguracaoDAO configuracaoDAO = new ArquivoConfiguracaoDAO();
 	
 	public List<Individuo> getIndividuos() {
 		return individuos;
 	}
         
         public void BalanceadorPopulacao(){
+            int tam = Integer.parseInt(configuracaoDAO.get("tamanho.populacao.inicial"));
             List<Individuo> ordenaTodos = new ArrayList<>();
             ordenaTodos = this.getIndividuos();
+            int tamAtual = ordenaTodos.size();
             Collections.sort(ordenaTodos);
-            if(this.individuos.size() == 352)
-                this.remover(ordenaTodos.get(351));
-            if(this.individuos.size() == 351)
-                this.remover(ordenaTodos.get(350));
+            while(tamAtual != tam){
+                this.remover(ordenaTodos.get(tamAtual - 1));
+                tamAtual = ordenaTodos.size();
+            }
         }
 
 	public void setIndividuos(List<Individuo> individuos) {
