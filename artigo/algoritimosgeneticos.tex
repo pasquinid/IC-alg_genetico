@@ -158,6 +158,15 @@ sumario=tradicional
 		\includegraphics[width=1\textwidth]{Figuras/funcionamento-ag.png}
 		\caption{Esquema geral de funcionamento do AG.}
 	\end{figure}
+
+	Foi utilizado uma matriz 42x42 para montar o grafo das cidades com as distâncias entre cada uma delas. 
+	A representação de um cromossomo, para esta aplicação, é um vetor de tamanho 42 com a ordem a das cidades que irão ser percorridas. 
+	
+	Estrutura de um cromossomo: [d0,d1,d2,...,d41], onde d é a distância entre a cidade i e a cidade i-1.
+	
+	A aptidão(\textit{fitness}) é o cálculo da a distância total que é percorrida, sendo o objetivo é encontrar a menor distância.
+	
+	O método utilizado para fazer a seleção dos pais foi o método da roleta. Em seguida, a partir dos pais selecionados para a reprodução, é feito um \textit{Crossover} OX para gerar os filhos. Esses filhos sofrem mutação por um algoritimo de mutação pode inversão e ocorre a reincerção dos mesmo na população.
 	
 	
 	\section{Configuração do AG}
