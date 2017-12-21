@@ -166,18 +166,43 @@ sumario=tradicional
 	
 	A aptidão(\textit{fitness}) é o cálculo da a distância total que é percorrida, sendo o objetivo é encontrar a menor distância.
 	
-	O método utilizado para fazer a seleção dos pais foi o método da roleta. Em seguida, a partir dos pais selecionados para a reprodução, é feito um \textit{Crossover} OX para gerar os filhos. Esses filhos sofrem mutação por um algoritimo de mutação pode inversão e ocorre a reincerção dos mesmo na população.
+	O método utilizado para fazer a seleção dos pais foi o método da roleta. Em seguida, a partir dos pais selecionados para a reprodução, é feito um \textit{Crossover} OX para gerar os filhos. Esses filhos sofrem mutação por um algoritimo de mutação pode inversão e ocorre a reincerção dos mesmo na população calculando a aptidão de cada um.
 	
 	
 	\section{Configuração do AG}
 	
-
+	O programa implementado possui um arquivo de configurações onde fica bem mais simples mudar os valores dos elementos principais de um AG.
+	Esse arquivo possui uma variável para guardar o número de gerações que o programa irá rodar, uma variável que irá guardar a quantidade de indivíduos que serão gerados na população inicial, a porcentagem de mutação que será sofrida pelos filhos gerados, a quantidade de vértices do grafo, e por último, a distância máxima percorrida. 
+	
 
 	\section{Resultados}
+	
+	Nos primeiros resultados podemos utilizamos a mutação que troca dois genes, ecolhidos aleatoriamente, de posição.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{Figuras/resultado-2genes.png}
+		\caption{Resultado da mudança de aptidão através das gerações utilizando a mutação invertendo 2 genes.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{Figuras/resultado1.jpeg}
+		\caption{Evolução do AG através das gerações}
+	\end{figure}
+
+	Neste resultado podemos utilizamos a mutação que inverter uma sequência de genes, onde o ponto inicial e o ponto final da sequência são ecolhidos aleatoriamente.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{Figuras/resultado-inversao.png}
+		\caption{Resultado da mudança de aptidão através das gerações utilizando a mutação por inversão.}
+	\end{figure}
 
 	
 	\section{Conclusão}
 	
+	Com esse trabalho podemos concluir que a escolha de bons métodos heurísticos para os problemas complexos fazem toda a diferença nos resultados.E, neste caso, comparando a mutação invertendo apenas dois genes do cromossomo com a mutação que inverte uma parte do cromossomo, podemos observar que no segundo caso chegmos em um resultado bem melhor.
 
 	\begin{thebibliography}{4}
 		\bibliographystyle{apa}

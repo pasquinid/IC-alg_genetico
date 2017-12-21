@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.10.9)  20 DEC 2017 22:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.10.9)  21 DEC 2017 00:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -632,25 +632,52 @@ File: Figuras/funcionamento-ag.png Graphic file (type png)
 Package pdftex.def Info: Figuras/funcionamento-ag.png used on input line 158.
 (pdftex.def)             Requested size: 360.0pt x 270.23006pt.
  [3] [4 <./Figuras/funcionamento-ag.png>]
-[5] (./algoritimosgeneticos.aux) ) 
+<Figuras/resultado-2genes.png, id=25, 445.665pt x 423.5825pt>
+File: Figuras/resultado-2genes.png Graphic file (type png)
+
+<use Figuras/resultado-2genes.png>
+Package pdftex.def Info: Figuras/resultado-2genes.png used on input line 184.
+(pdftex.def)             Requested size: 360.0pt x 342.16277pt.
+
+<Figuras/resultado1.jpeg, id=26, 1284.8pt x 722.7pt>
+File: Figuras/resultado1.jpeg Graphic file (type jpg)
+
+<use Figuras/resultado1.jpeg>
+Package pdftex.def Info: Figuras/resultado1.jpeg used on input line 190.
+(pdftex.def)             Requested size: 360.0pt x 202.49797pt.
+ [5 <./Figuras/resultado-2genes.png>]
+Overfull \hbox (5.6658pt too wide) in paragraph at lines 194--195
+[]\OT1/lmr/m/n/10.95 Neste re-sul-tado pode-mos uti-lizamos a muta^^Xc~ao que i
+n-verter uma sequ^encia
+ []
+
+<Figuras/resultado-inversao.png, id=31, 490.83376pt x 392.46625pt>
+File: Figuras/resultado-inversao.png Graphic file (type png)
+
+<use Figuras/resultado-inversao.png>
+Package pdftex.def Info: Figuras/resultado-inversao.png used on input line 198.
+
+(pdftex.def)             Requested size: 360.0pt x 287.86336pt.
+ [6 <./Figuras/resultado1.jpeg>] [7 <./Figuras/resultado-inversao.png>] [8] (./
+algoritimosgeneticos.aux) ) 
 Here is how much of TeX's memory you used:
- 3190 strings out of 494946
- 44886 string characters out of 6180981
+ 3206 strings out of 494946
+ 45328 string characters out of 6180981
  109099 words of memory out of 5000000
- 6403 multiletter control sequences out of 15000+600000
+ 6415 multiletter control sequences out of 15000+600000
  34687 words of font info for 25 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  38i,5n,35p,796b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvip
-s/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/lm/lmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/lm/lmri10.pfb>
-Output written on algoritimosgeneticos.pdf (5 pages, 324902 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm
+-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/lm/lmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/l
+mri10.pfb>
+Output written on algoritimosgeneticos.pdf (8 pages, 557705 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
